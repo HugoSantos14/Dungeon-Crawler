@@ -1,5 +1,3 @@
 Integrantes do grupo:
 
-Hugo Santos
-Gabriel Eli
-Anthony Freitas
+Hugo Santos, Gabriel Eli e Anthony Freitas
