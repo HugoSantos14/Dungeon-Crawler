@@ -1,0 +1,73 @@
+#include <stdio.h>
+#define parede 1
+#define vazio 0
+#define porta 2
+#define usuario 3
+// gets:
+// movimentação
+
+// fase
+int linha = 13;
+int coluna = 2;
+char tecla;
+int fase1[15][15] = {
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+};
+// mapa
+void imprimirmapa(int fase1[15][15]) {
+  for (int i = 0; i < 15; i++) {
+    for (int j = 0; j < 15; j++) {
+      switch (fase1[i][j]) {
+      case parede:
+        printf("*");
+        break;
+      case vazio:
+        printf(" "); break; 
+        case porta:
+        printf("D");
+        break;
+      }
+    }
+  }
+}
+int main() {
+  imprimirmapa(fase1);
+  while (1) {
+    tecla = getch();
+    switch (tecla) {
+    case 'w':
+      linha--;
+      break;
+    case 'a':
+      coluna--;
+      break;
+    case 's':
+      linha++ ;
+        break;
+    case 'd':
+      coluna++;
+      break;
+    default:
+      break;
+    }
+    system("cls");
+    imprimirmapa(fase1);
+    linhaCol(linha, coluna);
+    printf("&");
+  }
+  return 0;
+}
