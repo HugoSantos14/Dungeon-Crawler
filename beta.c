@@ -82,11 +82,11 @@ void PrimeiraFase(){
 					player_j--;
 				}
 
-            	else if ((fase1[player_i][player_j - 1] != '*') && (fase1[player_i][player_j - 1] != fase1[7][1])){
+            	else if ((fase1[player_i][player_j - 1] != '*')){
                 	player_j--;
             	}
 
-				if ((player_i == 7) && (player_j - 1 == 1)){
+				if ((player_i == 7) && (player_j - 1 == 0) && (possui_chave == 0)){
 					printf("\tAperte I para pegar a chave.\n");
 					input = getch();
 					switch (input){
@@ -97,6 +97,10 @@ void PrimeiraFase(){
 							fase1[12][14] = '=';
 							break;
 
+						default:
+							player_j++;
+							break;
+							
 					}
 					
 				}
@@ -104,9 +108,6 @@ void PrimeiraFase(){
             	break;
             
         	case 's':
-				if((fase1[player_i + 1][player_j] == fase1[9][12])){
-
-				}
 
             	if (fase1[player_i + 1][player_j] != '*'){
                 	player_i++;
