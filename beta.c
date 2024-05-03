@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <stdlib.h>
+#include <conio.h>
 
 int i, j;
 char fase1[15][15] = 
@@ -28,6 +29,17 @@ char fase1[15][15] =
 int player_i = 1;
 int player_j = 1;
 int possui_chave = 0;
+
+void linhaCol(int lin, int col){
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),(COORD){col-1,lin-1}); //coorddenada na tela
+    
+    //funcao para deixar o cursor invisivel
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 100;
+    info.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &info);
+}
 
 void GerarFase1(char fase1[15][15]){
     for (i = 0; i < 15; i++){
@@ -73,13 +85,16 @@ void PrimeiraFase(){
                 	player_j--;
             	}
 
-				if (fase1[player_i][player_j - 1] == fase1[7][1])
-				{
+				if ((player_i == 7) && (player_j - 1 == 1)){
 					printf("\n\nAperte I para pegar a chave.\n");
-					if (input == 'I')
-					{
-						fase1[7][1] = ' ';
-						system("pause");
+					system("pause");
+					switch (input){
+						case 'i':
+							possui_chave = 1;
+							fase1[7][1] = ' ';
+							fase1[12][14] = '=';
+							break;
+
 					}
 					
 				}
@@ -109,17 +124,6 @@ void PrimeiraFase(){
             	break;
 		}
 	}
-}
-
-void linhaCol(int lin, int col){
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),(COORD){col-1,lin-1}); //coorddenada na tela
-    
-    //funcao para deixar o cursor invisivel
-    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_CURSOR_INFO info;
-    info.dwSize = 100;
-    info.bVisible = FALSE;
-    SetConsoleCursorInfo(consoleHandle, &info);
 }
 
 int main(){
