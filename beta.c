@@ -18,13 +18,16 @@ char fase1[15][15] =
     {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', '*'},
     {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*'},
     {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
-    {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
+    {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'},
     {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'},
 };
 
+//7, 4
+
 int player_i = 1;
 int player_j = 1;
+int possui_chave = 0;
 
 void GerarFase1(char fase1[15][15]){
     for (i = 0; i < 15; i++){
@@ -42,7 +45,7 @@ void GerarFase1(char fase1[15][15]){
 
 void PrimeiraFase(){
 	fase1[9][12] = '@';
-	fase1[13][13] = 'D';
+	fase1[12][14] = 'D';
 	linhaCol(1,1);
 	char input;
 	
@@ -58,21 +61,51 @@ void PrimeiraFase(){
             	break;
             
         	case 'a':
-            	if (fase1[player_i][player_j - 1] != '*'){
+				if ((fase1[player_i][player_j - 1] == '*') && (player_i == 7) && (player_j - 5 == 0)){
+					fase1[7][4] = ' ';
+					fase1[7][3] = ' ';
+					fase1[7][2] = ' ';
+					fase1[7][1] = '@';
+					player_j--;
+				}
+
+            	else if ((fase1[player_i][player_j - 1] != '*') && (fase1[player_i][player_j - 1] != fase1[7][1])){
                 	player_j--;
             	}
+
+				if (fase1[player_i][player_j - 1] == fase1[7][1])
+				{
+					printf("\n\nAperte I para pegar a chave.\n");
+					if (input == 'I')
+					{
+						fase1[7][1] = ' ';
+						system("pause");
+					}
+					
+				}
+
             	break;
             
         	case 's':
+				if((fase1[player_i + 1][player_j] == fase1[9][12])){
+
+				}
+
             	if (fase1[player_i + 1][player_j] != '*'){
                 	player_i++;
             	}
+
             	break;
             
         	case 'd':
-            	if (fase1[player_i][player_j + 1] != '*'){
+            	if ((fase1[player_i][player_j + 1] != '*') && (fase1[player_i][player_j + 1] != 'D')){
                 	player_j++;
             	}
+
+				else if((fase1[player_i][player_j + 1] == '=') && (possui_chave == 1)){
+					
+				}
+
             	break;
 		}
 	}
