@@ -6,7 +6,6 @@
 int i, j;
 int player_i = 1;
 int player_j = 1;
-int possui_chave = 0;
 int hp = 30;
 int hp_max = 30;
 char fase1[15][15] = 
@@ -86,15 +85,15 @@ void PrimeiraFase(){
                 	player_j--;
             	}
 
-				if ((player_i == 7) && (player_j - 1 == 0) && (possui_chave == 0)){
-					printf("\tAperte I para pegar a chave.\n");
+				if ((fase1[7][1] == '@') && (player_i == 7) && (player_j - 1 == 0)){
+					printf("\n\nAperte I para pegar a chave.\n");
 					input = getch();
 					switch (input){
 						case 'i':
-							possui_chave = 1;
 							fase1[7][1] = ' ';
 							fase1[9][12] = ' ';
 							fase1[12][14] = '=';
+							player_j++;
 							break;
 
 						default:
@@ -126,9 +125,21 @@ void PrimeiraFase(){
                 	player_j++;
             	}
 
-				else if((fase1[player_i][player_j] == '=') && (possui_chave == 1)){
-					printf("\n\nFase 1 concluida!\n");
-					system("pause");
+				if((fase1[12][14] == '=') && (player_i == 12) && (player_j == 14)){
+							printf("\n\nFase 1 concluida!\n");
+							system("pause");
+							player_j--;
+					/*switch (input){
+						case 'd':
+					printf("\n\nSiga em frente para atravessar a porta.");
+					input = getch();
+							break;
+
+						default:
+							player_j--;
+							break;
+
+					}*/
 				}
 
             	break;
