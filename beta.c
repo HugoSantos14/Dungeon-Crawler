@@ -116,7 +116,13 @@ void PrimeiraFase(){
             	break;
             
         	case 'd':
-            	if ((fase1[player_i][player_j + 1] != '*') && (fase1[player_i][player_j + 1] != 'D')){
+
+				if((fase1[player_i][player_j + 1] == 'D') && (possui_chave == 0)){
+					printf("\tA porta esta trancada.\n");
+					input = getch();
+				}
+
+            	else if ((fase1[player_i][player_j + 1] != '*')){
                 	player_j++;
             	}
 
