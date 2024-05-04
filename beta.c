@@ -87,7 +87,11 @@ void mov_monstro1(){
 				fase2[monster_i][monster_j] = ' ';
                 monster_i--;
 				fase2[monster_i][monster_j] = 'X';
-            }
+            } else {
+				fase2[monster_i][monster_j] = ' ';
+                monster_i++;
+				fase2[monster_i][monster_j] = 'X';
+			}
             break;
 		
 		case 2:
@@ -95,7 +99,11 @@ void mov_monstro1(){
 				fase2[monster_i][monster_j] = ' ';
                 monster_j--;
 				fase2[monster_i][monster_j] = 'X';
-            }
+            } else {
+				fase2[monster_i][monster_j] = ' ';
+                monster_j++;
+				fase2[monster_i][monster_j] = 'X';
+			}
 			break;
 		
 		case 3:
@@ -103,7 +111,11 @@ void mov_monstro1(){
 				fase2[monster_i][monster_j] = ' ';
                 monster_i++;
 				fase2[monster_i][monster_j] = 'X';
-            }
+            } else {
+				fase2[monster_i][monster_j] = ' ';
+                monster_i--;
+				fase2[monster_i][monster_j] = 'X';
+			}
 			break;
 		
 		case 4:
@@ -111,7 +123,11 @@ void mov_monstro1(){
 				fase2[monster_i][monster_j] = ' ';
                 monster_j++;
 				fase2[monster_i][monster_j] = 'X';
-            }
+            } else {
+				fase2[monster_i][monster_j] = ' ';
+                monster_j--;
+				fase2[monster_i][monster_j] = 'X';
+			}
 			break;
 	}
 }
