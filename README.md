@@ -5,6 +5,6 @@
 
 Integrantes do grupo:
 
-Hugo Santos
-Gabriel Eli 
+Hugo Santos,
+Gabriel Eli,
 Anthony Freitas
