@@ -81,7 +81,7 @@ void linhaCol(int lin, int col){
 
 void mov_monstro1(){
 	srand(time(NULL));
-	switch (1 + rand() % 4){
+	switch ((rand() % 4) + 1){
 		case 1:
 			if (fase2[monster_i - 1][monster_j] != '*'){
 				fase2[monster_i][monster_j] = ' ';
@@ -200,9 +200,7 @@ void PrimeiraFase(){
 					fase1[7][2] = ' ';
 					fase1[7][1] = '@';
 					player_j--;
-				}
-
-            	else if ((fase1[player_i][player_j - 1] != '*')){
+				} else if ((fase1[player_i][player_j - 1] != '*')){
                 	player_j--;
             	}
 
@@ -236,16 +234,14 @@ void PrimeiraFase(){
             
         	case 'd':
 
-				if(fase1[player_i][player_j + 1] == 'D'){
+				if (fase1[player_i][player_j + 1] == 'D'){
 					printf("\n\nA porta esta trancada.\n");
 					input = getch();
-				}
-
-            	else if ((fase1[player_i][player_j + 1] != '*')){
+				} else if ((fase1[player_i][player_j + 1] != '*')){
                 	player_j++;
             	}
 
-				if((fase1[12][14] == '=') && (player_i == 12) && (player_j == 14)){
+				if ((fase1[12][14] == '=') && (player_i == 12) && (player_j == 14)){
 					printf("\n\nFase 1 concluida!\n");
 					system("pause");
 					player_j--;
@@ -308,7 +304,7 @@ void SegundaFase(){
 int main(){
 	
 	PrimeiraFase();
-	SegundaFase();
+	//SegundaFase();
 	//cheats();
 	
 	return 0;
