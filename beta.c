@@ -244,7 +244,6 @@ void PrimeiraFase(){
 				if ((fase1[12][14] == '=') && (player_i == 12) && (player_j == 14)){
 					printf("\n\nFase 1 concluida!\n");
 					system("pause");
-					player_j--;
 					SegundaFase();
 				}
 
