@@ -1,5 +1,4 @@
 Historia:
-
 Objetivo:
 
 Como jogar:
