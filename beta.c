@@ -21,7 +21,7 @@ char fase1[15][15] =
     {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', '*'}, //3
     {'*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //4
     {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //5
-    {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', '*'}, //6
+    {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', '*', ' ', '*', '*'}, //6
     {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', '*'}, //7
     {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', '*'}, //8
     {'*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', '*', ' ', '@', ' ', '*'}, //9
@@ -187,14 +187,29 @@ void PrimeiraFase(){
 		printf("\n\tHP: %d/%d\n", hp, hp_max);
 		input = getch();
 		switch (input){
+			case 'W':
     		case 'w':
             	if (fase1[player_i - 1][player_j] != '*'){
                 	player_i--;
             	}
             	break;
             
+            case 'A':
         	case 'a':
-				if ((fase1[player_i][player_j - 1] == '*') && (player_i == 7) && (player_j - 5 == 0)){
+        		
+				if ((fase1[player_i][player_j - 1] == '@') && (player_i != 7)){
+					printf("\n\nAperte I para pegar a chave.\n");
+					input = getch();
+					switch (input){
+						case 'I':
+						case 'i':
+							printf("Nao aconteceu nada... parece que a chave era falsa.\n\n");
+							system("pause");
+						
+						default:
+							break;
+					}
+				} else if ((fase1[player_i][player_j - 1] == '*') && (player_i == 7) && (player_j - 5 == 0)){
 					fase1[7][4] = ' ';
 					fase1[7][3] = ' ';
 					fase1[7][2] = ' ';
@@ -208,6 +223,7 @@ void PrimeiraFase(){
 					printf("\n\nAperte I para pegar a chave.\n");
 					input = getch();
 					switch (input){
+						case 'I':
 						case 'i':
 							fase1[7][1] = ' ';
 							fase1[9][12] = ' ';
@@ -224,17 +240,42 @@ void PrimeiraFase(){
 
             	break;
             
+            case 'S':
         	case 's':
-
-            	if (fase1[player_i + 1][player_j] != '*'){
+				
+				if (fase1[player_i + 1][player_j] == '@'){
+					printf("\n\nAperte I para pegar a chave.\n");
+					input = getch();
+					switch (input){
+						case 'I':
+						case 'i':
+							printf("Nao aconteceu nada... parece que a chave era falsa.\n\n");
+							system("pause");
+						
+						default:
+							break;
+					}
+				} else if (fase1[player_i + 1][player_j] != '*'){
                 	player_i++;
-            	}
-
+            	} 
+				
             	break;
             
+            case 'D':
         	case 'd':
-
-				if (fase1[player_i][player_j + 1] == 'D'){
+				if (fase1[player_i][player_j + 1] == '@'){
+					printf("\n\nAperte I para pegar a chave.\n");
+					input = getch();
+					switch (input){
+						case 'I':
+						case 'i':
+							printf("Nao aconteceu nada... parece que a chave era falsa.\n\n");
+							system("pause");
+						
+						default:
+							break;
+					}
+				} else if (fase1[player_i][player_j + 1] == 'D'){
 					printf("\n\nA porta esta trancada.\n");
 					input = getch();
 				} else if ((fase1[player_i][player_j + 1] != '*')){
