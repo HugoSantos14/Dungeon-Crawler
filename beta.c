@@ -93,26 +93,26 @@ char fase2[30][30] =
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //2
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'D'}, //3
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //4
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //5
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //5
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //6
-	{'*', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //7
-	{'*', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //8
-	{'*', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //9
+	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //7
+	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //8
+	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //9
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //10
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //11
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //11
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //12
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //13
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //14
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //15
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //16
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //17
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //18
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //18
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //19
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', '*'}, //20
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', '*'}, //21
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', '*', '*', '*', '*', ' ', ' ', ' ', ' ', '*'}, //22
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //20
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //21
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //22
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //23
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //24
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //24
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //25
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //26
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //27
@@ -190,7 +190,7 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
     setlocale(LC_ALL, "C");
     box(lin1, col1, lin2, col2);
     setlocale(LC_ALL, "");
-    //la�o das opc�es
+    //laï¿½o das opcï¿½es
     while(1){
     
         linha = lin1 + 2;
@@ -209,7 +209,7 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
         linhaCol(1, 1);
         tecla = getch();
         linhaCol(22, 1);
-        //Op��o
+        //Opï¿½ï¿½o
         if (tecla == 27){               //ESC
             opc = 0;
             break;
@@ -217,11 +217,11 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
             break;
         } else if (tecla == 72){        //seta para cima
             if(opc > 1){
-                opc--;                  // se a opção for maior que 1, pode voltar 
+                opc--;                  // se a opÃ§Ã£o for maior que 1, pode voltar 
             }
         } else if (tecla == 80){        //seta para baixo
             if (opc < qtd){
-                opc++;                  //Se a opção for menor que quantidade de itens, posso avançar    
+                opc++;                  //Se a opÃ§Ã£o for menor que quantidade de itens, posso avanÃ§ar    
             }
         }
     }
@@ -431,9 +431,12 @@ void PrimeiraFase(){
 					input = getch();
 					switch (toupper(input)){
 						case 'I':
-							printf("\nNao aconteceu nada... parece que a chave era falsa.\n\n");
+							printf("\nNao aconteceu nada... parece que a chave era falsa.\n");
 							system("pause");
-						
+							printf("\nParece que tem algo escrito nessa chave... um enigma!\n");
+							system("pause");
+							printf("\n\"No oeste se encontra a sua resposta. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
+							system("pause");
 						default:
 							break;
 					}
@@ -474,9 +477,12 @@ void PrimeiraFase(){
 					input = getch();
 					switch (toupper(input)){
 						case 'I':
-							printf("Nao aconteceu nada... parece que a chave era falsa.\n\n");
+							printf("\nNao aconteceu nada... parece que a chave era falsa.\n");
 							system("pause");
-						
+							printf("\nParece que tem algo escrito nessa chave... um enigma!\n");
+							system("pause");
+							printf("\n\"No oeste se encontra a sua resposta. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
+							system("pause");
 						default:
 							break;
 					}
@@ -492,9 +498,12 @@ void PrimeiraFase(){
 					input = getch();
 					switch (toupper(input)){
 						case 'I':
-							printf("Nao aconteceu nada... parece que a chave era falsa.\n\n");
+							printf("\nNao aconteceu nada... parece que a chave era falsa.\n");
 							system("pause");
-						
+							printf("\nParece que tem algo escrito nessa chave... um enigma!\n");
+							system("pause");
+							printf("\n\"No oeste se encontra a sua resposta. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
+							system("pause");
 						default:
 							break;
 					}
@@ -537,7 +546,12 @@ void SegundaFase(){
 		input = getch();
 		switch(toupper(input)){
 			case 'W':
-				if (fase2[player_i - 1][player_j] == 'X'){
+				if (fase2[player_i - 1][player_j] == '#'){
+					if (hp > 10){
+						hp -= 10;
+					}
+					mov_monstro1();
+				} else if (fase2[player_i - 1][player_j] == 'X'){
 					mov_monstro1();
 				} else if (fase2[player_i - 1][player_j] != '*'){
                 	player_i--;
@@ -547,7 +561,12 @@ void SegundaFase(){
             	break;
 			
 			case 'A':
-				if (fase2[player_i][player_j - 1] == 'X'){
+				if (fase2[player_i][player_j - 1] == '#'){
+					if (hp > 10){
+						hp -= 10;
+					}
+					mov_monstro1();
+				} else if (fase2[player_i][player_j - 1] == 'X'){
 					mov_monstro1();
 				} else if ((fase2[player_i][player_j - 1] != '*')){
                 	player_j--;
@@ -556,7 +575,12 @@ void SegundaFase(){
 				break;
 
 			case 'S':
-				if (fase2[player_i + 1][player_j] == 'X'){
+				if (fase2[player_i + 1][player_j] == '#'){
+					if (hp > 10){
+						hp -= 10;
+					}
+					mov_monstro1();
+				} else if (fase2[player_i + 1][player_j] == 'X'){
 					mov_monstro1();
 				} else if (fase2[player_i + 1][player_j] != '*'){
                 	player_i++;
@@ -566,7 +590,12 @@ void SegundaFase(){
             	break;
 
 			case 'D':
-				if (fase2[player_i][player_j + 1] == 'X'){
+				if (fase2[player_i][player_j + 1] == '#'){
+					if (hp > 10){
+						hp -= 10;
+					}
+					mov_monstro1();
+				} else if (fase2[player_i][player_j + 1] == 'X'){
 					mov_monstro1();
 				} else if (fase2[player_i][player_j + 1] == 'D'){
 					printf("\n\nA porta esta trancada.\n");
@@ -576,7 +605,6 @@ void SegundaFase(){
 					mov_monstro1();
             	}
 				break;
-
 		}
 	}
 }
