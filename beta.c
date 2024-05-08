@@ -11,8 +11,9 @@ int i, j;
 int player_i, player_j;
 int monster_i, monster_j;
 int tamlin, tamcol;
-int hp = 30;
-int hp_max = 30;
+int player_hp = 30;
+int monster1_hp = 30;
+int fase_concluida = 0;
 char input;
 char cheat[10];
 
@@ -95,7 +96,7 @@ char fase2[30][30] =
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //4
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //5
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //6
-	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //7
+	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //7
 	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //8
 	{'*', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //9
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //10
@@ -232,7 +233,9 @@ void mov_monstro1(){
 	srand(time(NULL));
 	switch ((rand() % 4) + 1){
 		case 1:
-			if (fase2[monster_i - 1][monster_j] == ' '){
+			if (fase2[monster_i - 1][monster_j] == '&'){
+				player_hp -= 10;
+			} else if (fase2[monster_i - 1][monster_j] == ' '){
 				fase2[monster_i][monster_j] = ' ';
                 monster_i--;
 				fase2[monster_i][monster_j] = 'X';
@@ -244,7 +247,9 @@ void mov_monstro1(){
             break;
 		
 		case 2:
-			if ((fase2[monster_i][monster_j - 1] == ' ')){
+			if (fase2[monster_i][monster_j - 1] == '&'){
+				player_hp -= 10;
+			} else if ((fase2[monster_i][monster_j - 1] == ' ')){
 				fase2[monster_i][monster_j] = ' ';
                 monster_j--;
 				fase2[monster_i][monster_j] = 'X';
@@ -256,7 +261,9 @@ void mov_monstro1(){
 			break;
 		
 		case 3:
-			if ((fase2[monster_i + 1][monster_j] == ' ')){
+			if (fase2[monster_i + 1][monster_j] == '&'){
+				player_hp -= 10;
+			} else if ((fase2[monster_i + 1][monster_j] == ' ')){
 				fase2[monster_i][monster_j] = ' ';
                 monster_i++;
 				fase2[monster_i][monster_j] = 'X';
@@ -268,7 +275,9 @@ void mov_monstro1(){
 			break;
 		
 		case 4:
-			if ((fase2[monster_i][monster_j + 1] == ' ')){
+			if (fase2[monster_i][monster_j + 1] == '&'){
+				player_hp -= 10;
+			} else if ((fase2[monster_i][monster_j + 1] == ' ')){
 				fase2[monster_i][monster_j] = ' ';
                 monster_j++;
 				fase2[monster_i][monster_j] = 'X';
@@ -402,6 +411,7 @@ void GerarFase2(char fase2[30][30]){
 }
 
 void PrimeiraFase(){
+	fase_concluida = 0;
 	system("cls");
 	printf("\nCarregando");
 	for (i = 0; i < 5; i++){
@@ -415,7 +425,7 @@ void PrimeiraFase(){
 	while(1){
 		system("cls");
 		GerarFase1(fase1);
-		printf("\n\tHP: %d/%d\n", hp, hp_max);
+		printf("\n\tEvans: %d/30 HP\n", player_hp);
 		input = getch();
 		switch (toupper(input)){
 			case 'W':
@@ -515,17 +525,23 @@ void PrimeiraFase(){
             	}
 
 				if ((fase1[12][14] == '=') && (player_i == 12) && (player_j == 14)){
-					printf("\n\nFase 1 concluida!\n");
-					system("pause");
-					SegundaFase();
+					fase_concluida = 1;
+					break;
 				}
 
             	break;
+		}
+		if (fase_concluida == 1){
+			printf("\n\nFase 1 concluida!\n");
+			system("pause");
+			SegundaFase();
+			break;
 		}
 	}
 }
 
 void SegundaFase(){
+	fase_concluida = 0;
 	system("cls");
 	printf("\nCarregando");
 	for (i = 0; i < 5; i++){
@@ -542,16 +558,43 @@ void SegundaFase(){
 	while(1){
 		system("cls");
 		GerarFase2(fase2);
-		printf("\n\tHP: %d/%d\n", hp, hp_max);
+		printf("\n\tEvans: %d/30 HP\n", player_hp);
+		printf("\tMonstro nivel 1: %d/30 HP\n", monster1_hp);
+		if (player_hp == 0){
+			printf("\n\nFIM DE JOGO\n");
+			system("pause");
+			system("cls");
+			printf("\nCarregando");
+			for (i = 0; i < 5; i++){
+        		Sleep(300);
+        		printf(".");
+    		}
+    		player_hp = 30;
+    		fase1[7][4] = '*';
+			fase1[7][3] = '*';
+			fase1[7][2] = '*';
+			fase1[7][1] = '*';
+			fase1[9][12] = '@';
+			fase1[12][14] = 'D';
+			fase2[monster_i][monster_j] = ' ';
+			break;
+		}
 		input = getch();
 		switch(toupper(input)){
 			case 'W':
 				if (fase2[player_i - 1][player_j] == '#'){
-					if (hp > 10){
-						hp -= 10;
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
 					}
 					mov_monstro1();
 				} else if (fase2[player_i - 1][player_j] == 'X'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
+					}
 					mov_monstro1();
 				} else if (fase2[player_i - 1][player_j] != '*'){
                 	player_i--;
@@ -562,11 +605,18 @@ void SegundaFase(){
 			
 			case 'A':
 				if (fase2[player_i][player_j - 1] == '#'){
-					if (hp > 10){
-						hp -= 10;
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
 					}
 					mov_monstro1();
 				} else if (fase2[player_i][player_j - 1] == 'X'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
+					}
 					mov_monstro1();
 				} else if ((fase2[player_i][player_j - 1] != '*')){
                 	player_j--;
@@ -576,11 +626,18 @@ void SegundaFase(){
 
 			case 'S':
 				if (fase2[player_i + 1][player_j] == '#'){
-					if (hp > 10){
-						hp -= 10;
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
 					}
 					mov_monstro1();
 				} else if (fase2[player_i + 1][player_j] == 'X'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
+					}
 					mov_monstro1();
 				} else if (fase2[player_i + 1][player_j] != '*'){
                 	player_i++;
@@ -591,11 +648,18 @@ void SegundaFase(){
 
 			case 'D':
 				if (fase2[player_i][player_j + 1] == '#'){
-					if (hp > 10){
-						hp -= 10;
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
 					}
 					mov_monstro1();
 				} else if (fase2[player_i][player_j + 1] == 'X'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 27;
+						player_j = 1;
+					}
 					mov_monstro1();
 				} else if (fase2[player_i][player_j + 1] == 'D'){
 					printf("\n\nA porta esta trancada.\n");
@@ -640,6 +704,11 @@ int main(){
 
     textColor(WHITE, _BLACK);
     linhaCol(24,1);
+    printf("\nSaindo");
+    for (i = 0; i < 5; i++){
+    	Sleep(300);
+        printf(".");
+    }
 	
 	return 0;
 }
