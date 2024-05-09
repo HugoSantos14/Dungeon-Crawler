@@ -110,14 +110,14 @@ char fase2[30][30] =
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //18
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //19
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //20
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //21
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //22
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //23
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //24
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //25
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //26
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //27
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //28
+	{'*', '#', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //21
+	{'*', '#', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '*', '*', '*', '*', '*', '#', ' ', ' ', ' ', ' ', '*'}, //22
+	{'*', '#', ' ', '#', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*', '*', '*', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //23
+	{'*', '#', '#', '#', ' ', ' ', ' ', '#', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //24
+	{'*', '*', '*', '*', '#', '#', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //25
+	{'*', ' ', ' ', '*', '#', '#', ' ', '#', '#', '#', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //26
+	{'*', 'A', ' ', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //27
+	{'*', ' ', ' ', '*', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //28
 	{'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'}, //29
 };
 
@@ -216,11 +216,11 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
             break;
         } else if (tecla == 13){        //ENTER
             break;
-        } else if (tecla == 119 || tecla == 87){        //seta para cima
+        } else if (tecla == 119 || tecla == 87){        //W
             if(opc > 1){
                 opc--;                  // se a opÃƒÂ§ÃƒÂ£o for maior que 1, pode voltar 
             }
-        } else if (tecla == 115 || tecla == 83){        //seta para baixo
+        } else if (tecla == 115 || tecla == 83){        //S
             if (opc < qtd){
                 opc++;                  //Se a opÃƒÂ§ÃƒÂ£o for menor que quantidade de itens, posso avanÃƒÂ§ar    
             }
@@ -297,6 +297,7 @@ void cheats(){
 }
 
 void TutorialA(){
+	system("cls");
 	printf("Fase 1: \n\n\tDimensao: 15x15 \n\tElementos: \n\n\t1 - Jogador \n\t2 - Parede \n\t3 - Porta \n\t4 - Chave\n\n");
 	printf("Fase 2: \n\n\tDimensao: 30x30 \n\tElementos: \n\n\t1 - Todos os elementos da Fase 1 \n\t2 - Botao \n\t3 - Espinhos \n\t4 - Monstro Nivel 1\n\n");
 	printf("Fase 3: \n\n\tDimensao: 60x60 \n\tElementos: \n\n\t1 - Todos os elementos das Fases 1 e 2 \n\t2 - Teletransporte \n\t3 - Monstro Nivel 2\n\n");
@@ -304,6 +305,7 @@ void TutorialA(){
 }
 
 void TutorialB(){
+	system("cls");
 	printf("Comandos:\n\n");
     printf("\tW: Anda uma casa para cima.\n");
     printf("\tA: Anda uma casa para a esquerda.\n");
@@ -314,57 +316,67 @@ void TutorialB(){
 }
 
 void TutorialC(){
+	system("cls");
 	printf("Elementos do jogo:\n\n");
     printf("\t* - Parede \n\t& - jogador \n\tD - Porta fechada \n\t= - Porta aberta \n\t@ - Chave \n\tO - Botao \n\t# - Espinho \n\tX - Monstro nivel 1 \n\tV - Monstro nivel 2\n\n");
 	printf("Aperte Z para voltar.\n");
 }
 
 void GerarTutorial(){
-    Cursor_Invisivel();
-    system("cls");
-	printf("\nQual conhecimento deseja buscar?\n\n\tA - Fases\n\tB - Comandos\n\tC - Elementos do jogo\n\tZ - Sair\n");
-    input = getch();
+	int opc;
+	int sair;
+    char lista[4][40] = {"Fases\t\t\t\t\t", "Comandos\t\t\t\t\t", "Elementos do jogo\t\t\t\t\t", "Voltar\t\t\t\t\t"};
 	system("cls");
-    switch(toupper(input)){
-        case 'A':
-            TutorialA();
-		    input = getch();
-            switch (toupper(input)){
-                case 'Z':
-		            system("cls");
-                    GerarTutorial();
-            }
+    
+    setlocale(LC_ALL,"");
+		linhaCol(9, 11);
+		printf("Qual conhecimento deseja?");
+        opc = menu(10, 11, 4, lista);
+    while(1){
+    
+        if (opc == 4){
             break;
-            
-        case 'B':
-            TutorialB();
-		    input = getch();
-            switch (toupper(input)){
-                case 'Z':
-		            system("cls");
-                    GerarTutorial();
-            }
-            break;
-            
-        case 'C':
-            TutorialC();
-		    input = getch();
-            switch (toupper(input)){
-                case 'Z':
-		            system("cls");
-                    GerarTutorial();
-            }
-            break;
-                
-        case 'Z':
-			printf("\nSaindo");
-    		for (i = 0; i < 5; i++){
-        	Sleep(300);
-        	printf(".");
-    		}
-
-            break;
+        } else {
+			switch (opc){
+				case 1:
+					TutorialA();
+					input = getch();
+					switch (toupper(input)){
+						case 'Z':
+							system("cls");
+							GerarTutorial();
+							break;
+					}
+					
+					break;
+				
+				case 2:
+					TutorialB();
+					input = getch();
+					switch (toupper(input)){
+						case 'Z':
+							system("cls");
+							GerarTutorial();
+							break;
+					}
+					break;
+				
+				case 3:
+					TutorialC();
+					input = getch();
+					switch (toupper(input)){
+						case 'Z':
+							system("cls");
+							GerarTutorial();
+							break;
+					}
+					break;
+			}
+			break;
+		}
     }
+    textColor(WHITE, _BLACK);
+    system("cls");
 }
 
 void Tutorial(){
