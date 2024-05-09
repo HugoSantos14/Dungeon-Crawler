@@ -191,13 +191,13 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
     setlocale(LC_ALL, "C");
     box(lin1, col1, lin2, col2);
     setlocale(LC_ALL, "");
-    //laï¿½o das opcï¿½es
+    //laÃ¯Â¿Â½o das opcÃ¯Â¿Â½es
     while(1){
     
         linha = lin1 + 2;
         for(i = 0; i < qtd; i++){           
             if (i + 1 == opc){
-                textColor(BLACK, _GREEN);
+                textColor(BLACK, _LIGHTGREEN);
             } else {
                 textColor(WHITE, _BLACK);
             }
@@ -210,19 +210,19 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
         linhaCol(1, 1);
         tecla = getch();
         linhaCol(22, 1);
-        //Opï¿½ï¿½o
+        //OpÃ¯Â¿Â½Ã¯Â¿Â½o
         if (tecla == 27){               //ESC
             opc = 0;
             break;
         } else if (tecla == 13){        //ENTER
             break;
-        } else if (tecla == 72){        //seta para cima
+        } else if (tecla == 119 || tecla == 87){        //seta para cima
             if(opc > 1){
-                opc--;                  // se a opÃ§Ã£o for maior que 1, pode voltar 
+                opc--;                  // se a opÃƒÂ§ÃƒÂ£o for maior que 1, pode voltar 
             }
-        } else if (tecla == 80){        //seta para baixo
+        } else if (tecla == 115 || tecla == 83){        //seta para baixo
             if (opc < qtd){
-                opc++;                  //Se a opÃ§Ã£o for menor que quantidade de itens, posso avanÃ§ar    
+                opc++;                  //Se a opÃƒÂ§ÃƒÂ£o for menor que quantidade de itens, posso avanÃƒÂ§ar    
             }
         }
     }
@@ -322,7 +322,7 @@ void TutorialC(){
 void GerarTutorial(){
     Cursor_Invisivel();
     system("cls");
-	printf("Qual conhecimento deseja buscar?\n\n\tA - Fases\n\tB - Comandos\n\tC - Elementos do jogo\n\tZ - Sair\n");
+	printf("\nQual conhecimento deseja buscar?\n\n\tA - Fases\n\tB - Comandos\n\tC - Elementos do jogo\n\tZ - Sair\n");
     input = getch();
 	system("cls");
     switch(toupper(input)){
@@ -384,12 +384,23 @@ void GerarFase1(char fase1[15][15]){
 		printf("\t");
         for (j = 0; j < 15; j++){ 
         	if (i == player_i && j == player_j){
+        		textColor(YELLOW, _BLACK);
                 printf("&");
-            } else {
+            } else if (fase1[i][j] == '@'){
+            	textColor(YELLOW, _BLACK);
+            	printf("%c", fase1[i][j]);
+			} else if (fase1[i][j] == 'D'){
+				textColor(LIGHTMAGENTA, _BLACK);
+				printf("%c", fase1[i][j]);
+			} else if (fase1[i][j] == '='){
+				textColor(LIGHTGREEN, _BLACK);
+				printf("%c", fase1[i][j]);
+			} else {
+            	textColor(DARKGRAY, _BLACK);
                 printf("%c", fase1[i][j]);
             }
+            textColor(WHITE, _BLACK);
 		}
-		
 		printf("\n");
     }
 }
@@ -400,10 +411,28 @@ void GerarFase2(char fase2[30][30]){
 		printf("\t");
         for (j = 0; j < 30; j++){ 
         	if (i == player_i && j == player_j){
+        		textColor(YELLOW, _BLACK);
                 printf("&");
-            } else {
+            } else if (fase2[i][j] == '@'){
+            	textColor(YELLOW, _BLACK);
+            	printf("%c", fase2[i][j]);
+			} else if (fase2[i][j] == 'D'){
+				textColor(LIGHTMAGENTA, _BLACK);
+				printf("%c", fase2[i][j]);
+			} else if (fase2[i][j] == '='){
+				textColor(LIGHTGREEN, _BLACK);
+				printf("%c", fase2[i][j]);
+			} else if (fase2[i][j] == 'X'){
+				textColor(RED, _BLACK);
+				printf("%c", fase2[i][j]);
+			} else if (fase2[i][j] == '#'){
+				textColor(LIGHTGRAY, _BLACK);
+				printf("%c", fase2[i][j]);
+			}else {
+            	textColor(DARKGRAY, _BLACK);
                 printf("%c", fase2[i][j]);
             }
+            textColor(WHITE, _BLACK);
 		}
 		
 		printf("\n");
@@ -675,15 +704,15 @@ void SegundaFase(){
 
 int main(){
 	
-	system("cls");
     int opc;
     char lista[3][40] = {"Jogar\t\t\t\t\t", "Tutorial\t\t\t\t\t", "Sair\t\t\t\t\t"};
-	linhaCol(9, 10);
-	printf(" Menu");
+	system("cls");
     
     setlocale(LC_ALL,"");
     while(1){
-        opc = menu(10, 10, 3, lista);
+		linhaCol(9, 10);
+		printf("Dungeon Crawler (Beta)");
+        opc = menu(10, 11, 3, lista);
     
         if (opc == 3){
             break;
@@ -703,7 +732,7 @@ int main(){
     }
 
     textColor(WHITE, _BLACK);
-    linhaCol(24,1);
+	system("cls");
     printf("\nSaindo");
     for (i = 0; i < 5; i++){
     	Sleep(300);
