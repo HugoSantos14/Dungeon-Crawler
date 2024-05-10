@@ -324,7 +324,6 @@ void TutorialC(){
 
 void GerarTutorial(){
 	int opc;
-	int sair;
     char lista[4][40] = {"Fases\t\t\t\t\t", "Comandos\t\t\t\t\t", "Elementos do jogo\t\t\t\t\t", "Voltar\t\t\t\t\t"};
 	system("cls");
     
