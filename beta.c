@@ -951,6 +951,7 @@ void SegundaFase(){
 		}
 		if (fase_concluida == 1){
 			printf("\n\nFase 2 concluida!\n");
+			printf("HP maximo restaurado.");
 			system("pause");
 			TerceiraFase();
 			break;
@@ -966,12 +967,56 @@ void TerceiraFase(){
         Sleep(300);
         printf(".");
     }
-	player_i = 27;
+	player_hp = 30;
+	player_i = 37;
 	player_j = 1;
-	monster_i = 3;
-	monster_j = 26;
+	monster_i = 1;
+	monster_j = 31;
 	fase2[monster_i][monster_j] = 'X';
-	linhaCol(27, 1);
+	linhaCol(37, 1);
+
+	while(1){
+		system("cls");
+		GerarFase3(fase3);
+		printf("\n\tEvans: %d/30 HP\n", player_hp);
+		printf("\tMonstro nivel 2: %d/50 HP\n", monster2_hp);
+		if (player_hp == 0){
+			GameOver();
+			break;
+		}
+
+		input = getch();
+		switch (toupper(input)){
+			case 'W':
+				if ((fase3[player_i - 1][player_j] != '*')){
+                	player_i--;
+            	}
+
+				break;
+			
+			case 'A':
+				if ((fase3[player_i][player_j - 1] != '*')){
+                	player_j--;
+            	}
+
+				break;
+
+			case 'S':
+				if ((fase3[player_i + 1][player_j] != '*')){
+                	player_i++;
+            	}
+				
+				break;
+
+			case 'D':
+				if ((fase3[player_i][player_j + 1] != '*')){
+                	player_j++;
+            	}
+
+				break;
+
+		}
+	}
 }
 
 int main(){
@@ -990,7 +1035,9 @@ int main(){
         } else {
 			switch (opc){
 				case 1:
-					PrimeiraFase();
+					//PrimeiraFase();
+					//SegundaFase();
+					TerceiraFase();
 					system("cls");
 					break;
 				
