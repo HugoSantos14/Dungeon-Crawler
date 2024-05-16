@@ -131,7 +131,7 @@ char fase3[60][60] =
 {
 	//0    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48   49   50   51   52   53   54   55   56   57   58   59
 	{'*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'}, //0
-	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //1
+	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'V', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //1
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //2
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //3
 	{'*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'}, //4
@@ -361,6 +361,26 @@ void mov_monstro1(){
 	}
 }
 
+void mov_monstro2(){
+	if (fase3[monster_i - 1][monster_j] == '&'){
+		player_hp -= 10;
+	} else if (fase3[monster_i - 1][monster_j] == ' '){
+		fase3[monster_i][monster_j] = ' ';
+        monster_i--;
+		fase3[monster_i][monster_j] = 'X';
+    } else {
+		fase3[monster_i][monster_j] = ' ';
+        monster_i++;
+		fase3[monster_i][monster_j] = 'X';
+	}
+
+	if ((monster_j > player_j) && (monster_j + 1 == ' ')){
+		monster_j++;
+	} else if ((monster_j < player_j) && (monster_j - 1 == ' ')){
+		monster_j--;
+	}
+}
+
 void Combate(){
 	
 }
@@ -558,7 +578,7 @@ void GerarFase3(char fase3[60][60]){
 			} else if (fase3[i][j] == '='){
 				textColor(LIGHTGREEN, _BLACK);
 				printf("%c", fase3[i][j]);
-			} else if (fase3[i][j] == 'X'){
+			} else if (fase3[i][j] == 'V'){
 				textColor(RED, _BLACK);
 				printf("%c", fase3[i][j]);
 			} else if (fase3[i][j] == '#'){
@@ -635,7 +655,7 @@ void PrimeiraFase(){
 							system("pause");
 							printf("\nParece que tem algo escrito nessa chave... um enigma!\n");
 							system("pause");
-							printf("\n\"No oeste se encontra a sua resposta. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
+							printf("\n\"Sua resposta se esconde nas paredes. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
 							system("pause");
 							break;
 						default:
@@ -972,7 +992,7 @@ void TerceiraFase(){
 	player_j = 1;
 	monster_i = 1;
 	monster_j = 31;
-	fase2[monster_i][monster_j] = 'X';
+	fase3[monster_i][monster_j] = 'V';
 	linhaCol(37, 1);
 
 	while(1){
@@ -992,12 +1012,20 @@ void TerceiraFase(){
                 	player_i--;
             	}
 
+				if ((monster2_hp > 0) && (fase3[player_i - 1][player_j] != '*')){
+					mov_monstro2();
+				}
+
 				break;
 			
 			case 'A':
 				if ((fase3[player_i][player_j - 1] != '*')){
                 	player_j--;
             	}
+
+				if ((monster2_hp > 0) && (fase3[player_i][player_j - 1] != '*')){
+					mov_monstro2();
+				}
 
 				break;
 
@@ -1006,12 +1034,20 @@ void TerceiraFase(){
                 	player_i++;
             	}
 				
+				if ((monster2_hp > 0) && (fase3[player_i + 1][player_j] != '*')){
+					mov_monstro2();
+				}
+
 				break;
 
 			case 'D':
 				if ((fase3[player_i][player_j + 1] != '*')){
                 	player_j++;
             	}
+
+				if ((monster2_hp > 0) && (fase3[player_i][player_j + 1] != '*')){
+					mov_monstro2();
+				}
 
 				break;
 
