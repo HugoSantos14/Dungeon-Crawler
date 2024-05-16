@@ -262,7 +262,7 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
     setlocale(LC_ALL, "C");
     box(lin1, col1, lin2, col2);
     setlocale(LC_ALL, "");
-    //laÃ¯Â¿Â½o das opcÃ¯Â¿Â½es
+    //laÃƒÂ¯Ã‚Â¿Ã‚Â½o das opcÃƒÂ¯Ã‚Â¿Ã‚Â½es
     while(1){
     
         linha = lin1 + 2;
@@ -281,7 +281,7 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
         linhaCol(1, 1);
         tecla = getch();
         linhaCol(22, 1);
-        //OpÃ¯Â¿Â½Ã¯Â¿Â½o
+        //OpÃƒÂ¯Ã‚Â¿Ã‚Â½ÃƒÂ¯Ã‚Â¿Ã‚Â½o
         if (tecla == 27){               //ESC
             opc = 0;
             break;
@@ -289,11 +289,11 @@ int menu(int lin1, int col1, int qtd, char lista[3][40]){
             break;
         } else if (tecla == 119 || tecla == 87){        //W
             if(opc > 1){
-                opc--;                  // se a opÃƒÂ§ÃƒÂ£o for maior que 1, pode voltar 
+                opc--;                  // se a opÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o for maior que 1, pode voltar 
             }
         } else if (tecla == 115 || tecla == 83){        //S
             if (opc < qtd){
-                opc++;                  //Se a opÃƒÂ§ÃƒÂ£o for menor que quantidade de itens, posso avanÃƒÂ§ar    
+                opc++;                  //Se a opÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o for menor que quantidade de itens, posso avanÃƒÆ’Ã‚Â§ar    
             }
         }
     }
@@ -362,22 +362,31 @@ void mov_monstro1(){
 }
 
 void mov_monstro2(){
-	if (fase3[monster_i - 1][monster_j] == '&'){
+	
+	//LINHA
+	if ((fase3[monster_i - 1][monster_j] == '&') || (fase3[monster_i + 1][monster_j] == '&')){
 		player_hp -= 10;
-	} else if (fase3[monster_i - 1][monster_j] == ' '){
+	} else if ((fase3[monster_i - 1][monster_j] == ' ') && (monster_i - 1 != player_i) && (monster_i > player_i)){
 		fase3[monster_i][monster_j] = ' ';
         monster_i--;
-		fase3[monster_i][monster_j] = 'X';
-    } else {
+		fase3[monster_i][monster_j] = 'V';
+    } else if ((fase3[monster_i + 1][monster_j] == ' ') && (monster_i + 1 != player_i) && (monster_i < player_i)) {
 		fase3[monster_i][monster_j] = ' ';
         monster_i++;
-		fase3[monster_i][monster_j] = 'X';
+		fase3[monster_i][monster_j] = 'V';
 	}
-
-	if ((monster_j > player_j) && (monster_j + 1 == ' ')){
-		monster_j++;
-	} else if ((monster_j < player_j) && (monster_j - 1 == ' ')){
-		monster_j--;
+	
+	//COLUNA
+	if ((fase3[monster_i][monster_j - 1] == '&') || (fase3[monster_i][monster_j + 1] == '&')){
+		player_hp -= 10;
+	} else if ((fase3[monster_i][monster_j - 1] == ' ') && (monster_j - 1 != player_j) && (monster_j > player_j)){
+		fase3[monster_i][monster_j] = ' ';
+        monster_j--;
+		fase3[monster_i][monster_j] = 'V';
+    } else if ((fase3[monster_i][monster_j + 1] == ' ') && (monster_j + 1 != player_j) && (monster_j < player_j)) {
+		fase3[monster_i][monster_j] = ' ';
+        monster_j++;
+		fase3[monster_i][monster_j] = 'V';
 	}
 }
 
@@ -618,6 +627,7 @@ void GameOver(){
 	fase2[12][16] = 'D';
 	fase2[3][29] = 'D';
 	fase2[monster_i][monster_j] = ' ';
+	fase3[monster_i][monster_j] = ' ';
 }
 
 void PrimeiraFase(){
@@ -702,7 +712,7 @@ void PrimeiraFase(){
 							system("pause");
 							printf("\nParece que tem algo escrito nessa chave... um enigma!\n");
 							system("pause");
-							printf("\n\"No oeste se encontra a sua resposta. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
+							printf("\n\"Sua resposta se esconde nas paredes. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
 							system("pause");
 							break;
 						default:
@@ -724,7 +734,7 @@ void PrimeiraFase(){
 							system("pause");
 							printf("\nParece que tem algo escrito nessa chave... um enigma!\n");
 							system("pause");
-							printf("\n\"No oeste se encontra a sua resposta. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
+							printf("\n\"Sua resposta se esconde nas paredes. Sua saida daqui. A reliquia que dara luz a sua fuga.\"\n");
 							system("pause");
 							break;
 						default:
@@ -928,6 +938,8 @@ void SegundaFase(){
 					input = getch();
 					switch (toupper(input)){
 						case 'I':
+							printf("\nVoce ouviu um estrondo de uma rocha caindo. Logo em seguida, um grito de agonia se esvaindo...\n");
+							system("pause");
 							monster1_hp = 0;
 							fase2[monster_i][monster_j] = '@';
 							break;
@@ -1008,7 +1020,13 @@ void TerceiraFase(){
 		input = getch();
 		switch (toupper(input)){
 			case 'W':
-				if ((fase3[player_i - 1][player_j] != '*')){
+				if (fase3[player_i - 1][player_j] == 'V'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 37;
+						player_j = 1;
+					}
+				} else if ((fase3[player_i - 1][player_j] != '*')){
                 	player_i--;
             	}
 
@@ -1019,7 +1037,13 @@ void TerceiraFase(){
 				break;
 			
 			case 'A':
-				if ((fase3[player_i][player_j - 1] != '*')){
+				if (fase3[player_i][player_j - 1] == 'V'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 37;
+						player_j = 1;
+					}
+				} else if ((fase3[player_i][player_j - 1] != '*')){
                 	player_j--;
             	}
 
@@ -1030,7 +1054,13 @@ void TerceiraFase(){
 				break;
 
 			case 'S':
-				if ((fase3[player_i + 1][player_j] != '*')){
+				if (fase3[player_i + 1][player_j] == 'V'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 37;
+						player_j = 1;
+					}
+				} else if ((fase3[player_i + 1][player_j] != '*')){
                 	player_i++;
             	}
 				
@@ -1041,7 +1071,13 @@ void TerceiraFase(){
 				break;
 
 			case 'D':
-				if ((fase3[player_i][player_j + 1] != '*')){
+				if (fase3[player_i][player_j + 1] == 'V'){
+					if (player_hp != 0){
+						player_hp -= 10;
+						player_i = 37;
+						player_j = 1;
+					}
+				} else if ((fase3[player_i][player_j + 1] != '*')){
                 	player_j++;
             	}
 
@@ -1071,9 +1107,9 @@ int main(){
         } else {
 			switch (opc){
 				case 1:
-					//PrimeiraFase();
+					PrimeiraFase();
 					//SegundaFase();
-					TerceiraFase();
+					//TerceiraFase();
 					system("cls");
 					break;
 				
