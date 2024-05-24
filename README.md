@@ -12,6 +12,7 @@ Como jogar:
   S: O jogador irá para a esquerda uma casa.
   I: O jogador irá interagir com as reliquias e botões.
   Cheats:
+  nextlevel --> ir para a próxima fase.
   
 Integrantes do grupo:
 
